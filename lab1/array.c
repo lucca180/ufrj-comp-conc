@@ -12,6 +12,7 @@ int array[10000];
 void* somaArr (void* arg) {
   	t_Args *args = (t_Args *) arg;
 
+	printf("--Thread começando em %d e parando em %d\n", args->start, args->end-1);
 	for(int i = args->start; i < args->end; i++)
 		array[i] = i+1;
 
@@ -55,9 +56,11 @@ int main() {
 		} 
 	}
 
+	// Checa array
+	printf("--Checando calculos\n");
 	for(int i = 0; i < 10000; i++) {		
 		if(array[i] != i+1){
-			printf("ERROO!! VC É UM IDIOTA\n");
+			printf("ERROO!! A conta não bate\n");
 			break;
 		}
 	}
